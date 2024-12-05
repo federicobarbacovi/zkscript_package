@@ -36,7 +36,7 @@ class Secp256k1:
         x=Fq_k1(0x79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798),
         y=Fq_k1(0x483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8),
     )
-    test_script = EllipticCurveFq(q=modulus, curve_a=0)
+    test_script = EllipticCurveFq(q=modulus, curve_a=0, curve_b=7)
     test_script_unrolled = EllipticCurveFqUnrolled(q=modulus, ec_over_fq=test_script)
     # All possible combinations: ± P ± Q are tested. Refer to ./util.py
     positions_addition = [
@@ -159,7 +159,11 @@ class Secp256r1:
         x=Fq_r1(0x6B17D1F2E12C4247F8BCE6E563A440F277037D812DEB33A0F4A13945D898C296),
         y=Fq_r1(0x4FE342E2FE1A7F9B8EE7EB4A7C0F9E162BCE33576B315ECECBB6406837BF51F5),
     )
-    test_script = EllipticCurveFq(q=modulus, curve_a=0xFFFFFFFF00000001000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFC)
+    test_script = EllipticCurveFq(
+        q=modulus,
+        curve_a=0xFFFFFFFF00000001000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFC,
+        curve_b=0x5AC635D8AA3A93E7B3EBBD55769886BC651D06B0CC53B0F63BCE3C3E27D2604B,
+    )
     test_script_unrolled = EllipticCurveFqUnrolled(q=modulus, ec_over_fq=test_script)
     # All possible combinations: ± P ± Q are tested. Refer to ./util.py
     positions_addition = [
